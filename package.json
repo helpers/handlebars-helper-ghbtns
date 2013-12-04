@@ -1,0 +1,41 @@
+{
+  "name": "handlebars-helper-ghbtns",
+  "description": "{{ghbtn}} handlebars helper. Add github buttons (http://ghbtns.com) to your site.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/helpers/handlebars-helper-ghbtns",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/helpers/handlebars-helper-ghbtns.git"
+  },
+  "bugs": {
+    "url": "https://github.com/helpers/handlebars-helper-ghbtns/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/helpers/handlebars-helper-ghbtns/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "./index.js",
+  "dependencies": {
+    "lodash": "~2.2.1"
+  },
+  "keywords": [
+    "assemble",
+    "gh button",
+    "gh buttons",
+    "gh-button",
+    "ghbtn",
+    "ghbtns",
+    "github buttons",
+    "github",
+    "github-buttons",
+    "handlebars helper",
+    "handlebars",
+    "helper"
+  ]
+}
