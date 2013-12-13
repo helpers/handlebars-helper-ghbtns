@@ -1,7 +1,7 @@
 {
   "name": "handlebars-helper-ghbtns",
   "description": "{{ghbtn}} handlebars helper. Add github buttons (http://ghbtns.com) to your site.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/helpers/handlebars-helper-ghbtns",
   "author": {
     "name": "Jon Schlinkert",

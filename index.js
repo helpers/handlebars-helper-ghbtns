@@ -5,13 +5,12 @@
  */
 
 // Node.js
-var path   = require('path');
-var fs     = require('fs');
+var path = require('path');
+var fs = require('fs');
 
 // node_modules
 var grunt = require('grunt');
-var _     = require('lodash')
-
+var _ = require('lodash')
 
 // Export helpers
 module.exports.register = function (Handlebars, options, params) {
@@ -32,102 +31,73 @@ module.exports.register = function (Handlebars, options, params) {
     options = _.extend(options, opts.data, this, options.hash);
 
     // Defaults
-    var type   = options.type   || 'watch'; // watch || fork || follow
-    var count  = options.count  || 'true';
-    var title  = options.title  || 'Star on GitHub';
-
-    /**
-     * Text
-     */
+    var type = options.type || 'watch'; // watch || fork || follow
+    var count = options.count || true;
+    var title = options.title || 'Star on GitHub';
+    var size = options.size || '';
 
     // Default button text
-    if(type === 'fork') {
-      title = 'Fork on GitHub';
-    }
+    title = (type === 'fork') ? 'Fork on GitHub' : title;
+    title = (type === 'follow') ? 'Follow on GitHub' : title;
+    title = (type === 'watch') ? 'Watch on GitHub' : title;
 
-    if(type === 'follow') {
-      title = 'Follow on GitHub';
-    }
-
-    if(type === 'watch') {
-      title = 'Watch on GitHub';
-    }
-
-    /**
-     * Sizes
-     */
-
-    var width  = options.width  || 62;
-    var height = options.height || 20;
-
-    /**
-     * Watch
-     */
+    var width = 62;
+    var height = 20;
 
     // Basic Watch button
-    if(type === 'watch') {
-      width  = width || 62;
-      height = height || 20;
+    if (type === 'watch') {
+      width = 62;
+      height = 20;
     }
     // Watch with count
-    if(type === 'watch' && count === true) {
-      width  = width || 110;
-      height = height || 20;
+    if (type === 'watch' && (count === 'true' || count === true)) {
+      width = 110;
+      height = 20;
     }
-
-
-    /**
-     * Fork
-     */
 
     // Basic Fork button
-    if(type === 'fork') {
-      width  = width || 53;
-      height = height || 20;
+    if (type === 'fork') {
+      width = 53;
+      height = 20;
     }
     // Fork with count
-    if(type === 'fork' && count === true) {
-      width  = width || 95;
-      height = height || 20;
+    if (type === 'fork' && (count === 'true' || count === true)) {
+      width = 95;
+      height = 20;
     }
-
-    /**
-     * Follow
-     */
 
     // Basic Follow button
-    if(type === 'follow') {
-      width  = width || 132;
-      height = height || 20;
+    if (type === 'follow') {
+      width = 132;
+      height = 20;
     }
     // Follow with count
-    if(type === 'follow' && count === true) {
-      width  = width || 165;
-      height = height || 20;
+    if (type === 'follow' && (count === 'true' || count === true)) {
+      width = 165;
+      height = 20;
     }
 
     // Large Watch button with count
-    options.size = options.size || '';
-    if(options.size === 'large') {
-      options.size = '&size=large';
-      width  = 170;
+    if (size === 'large') {
+      size = '&size=large';
+      width = 170;
       height = 30;
     }
 
-    var user = 'user='     + (options.user  || 'assemble');
-    var repo = '&repo='    + (options.repo  || 'assemble');
+    var user = 'user=' + (options.user || 'assemble');
+    var repo = '&repo=' + (options.repo || 'assemble');
 
-    type     = '&type='    + type; // watch || fork || follow
-    count    = '&count='   + count;
-    width    = ' width="'  + width + '" ';
-    height   = ' height="' + height + '" ';
+    type = '&type=' + type; // watch || fork || follow
+    count = '&count=' + count;
+    width = ' width="' + width + '" ';
+    height = ' height="' + height + '" ';
 
-    var src   = 'http://ghbtns.com/github-btn.html?';
+    var src = 'http://ghbtns.com/github-btn.html?';
     var attrs = '" allowtransparency="true" frameborder="0" scrolling="0"';
-    var inner = src + user + repo + type + count + options.size + attrs + width + height;
+    var inner = src + user + repo + type + count + size + attrs + width + height;
 
     var button = '<iframe src="' + inner + '></iframe>';
-    return new Handlebars.SafeString(button);
+    return new Handlebars.SafeString(button.replace(/&amp;/g, '&'));
   });
 
 };

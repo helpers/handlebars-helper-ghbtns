@@ -26,7 +26,7 @@ grunt.initConfig({
 ```
 ## Usage
 
-Now that the helper is registered, you may begin using it in your templates.
+With the helper registered, you may now begin using it in your templates.
 
 ```html
 {{github user="upstage" repo="upstage" type="star"}}
